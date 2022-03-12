@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: gautamkrishnar/blog-post-workflow@main
+      - uses: jyb1798/Readme_Automatic_Test@main
         with:
-          feed_list: 'https://fetudy-blog.vercel.app/posts/2022-03-08-css-zerochae'
+          feed_list: 'https://fetudy-blog.vercel.app/posts'
