@@ -15,7 +15,7 @@ jobs:
           # necessary for github-action-til-autoformat-readme
           fetch-depth: 0
       - name: Autoformat README
-        uses: jyb1798/github-action-til-autoformat-readme@1.1.0
+        uses: jyb1798/Readme_Automatic_Test
         with:
           description: |
             An automatic Readme
