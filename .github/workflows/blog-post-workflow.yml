@@ -1,14 +1,26 @@
-name: Latest blog post workflow
+name: Build README
 on:
-  schedule: # Run workflow automatically
-    - cron: '0 * * * *' # Runs every hour, on the hour
-  workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the Github Actions Workflow page directly
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - README.md
 jobs:
-  update-readme-with-blog:
-    name: Update this repo's README with latest blog posts
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: jyb1798/Readme_Automatic_Test@main
+      - name: Check out repo
+        uses: actions/checkout@v2
         with:
-          feed_list: 'https://readme-automatic-test.vercel.app/posts'
+          # necessary for github-action-til-autoformat-readme
+          fetch-depth: 0
+      - name: Autoformat README
+        uses: jyb1798/github-action-til-autoformat-readme@1.1.0
+        with:
+          description: |
+            An automatic Readme
+          footer: |
+            [1]: https://readme-automatic-test.vercel.app/posts/2022-03-11
+            [2]: https://readme-automatic-test.vercel.app/posts/2022-03-10-JSvsECMAScript-jyb1798
+          list_most_recent: 2 # optional, lists most recent TILS below description
+          date_format: '2020 Jan 15:04' # optional, must align to https://golang.org/pkg/time/#Time.Format
