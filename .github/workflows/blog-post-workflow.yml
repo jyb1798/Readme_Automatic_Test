@@ -14,13 +14,13 @@ jobs:
         with:
           # necessary for github-action-til-autoformat-readme
           fetch-depth: 0
-      - name: Readme_Automatic_Test
-        uses: jyb1798/github-action-til-autoformat-readme@1.1.0
+      - name: Autoformat README
+        uses: jyb1798/Readme_Automatic_Test@1.2.0
         with:
           description: |
-            An automatic Readme
+            An Automatic Readme Test
           footer: |
             [1]: https://readme-automatic-test.vercel.app/posts/2022-03-11
-            [2]: https://github.com/jbranchaud/til
+            [2]: https://readme-automatic-test.vercel.app/posts/2022-03-10-JSvsECMAScript-jyb1798
           list_most_recent: 2 # optional, lists most recent TILS below description
           date_format: '2020 Jan 15:04' # optional, must align to https://golang.org/pkg/time/#Time.Format
