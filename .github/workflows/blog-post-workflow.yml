@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: jyb1798/Readme_Automatic_Test@main
         with:
-          feed_list: 'https://fetudy-blog.vercel.app/posts'
+          feed_list: 'https://readme-automatic-test.vercel.app/posts'
