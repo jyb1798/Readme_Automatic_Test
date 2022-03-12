@@ -9,6 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: jyb1798/Readme_Automatic_Test
+      - uses: jyb1798/Readme_Automatic_Test@main
         with:
           feed_list: 'https://readme-automatic-test.vercel.app/posts/2022-03-10-JSvsECMAScript-jyb1798'
