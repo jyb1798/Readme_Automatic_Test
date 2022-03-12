@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v2
       - uses: jyb1798/Readme_Automatic_Test
         with:
-          feed_list: 'https://readme-automatic-test.vercel.app/posts/2022-03-11'
+          feed_list: 'https://readme-automatic-test.vercel.app/posts/2022-03-10-JSvsECMAScript-jyb1798'
