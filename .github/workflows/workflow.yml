@@ -1,14 +1,31 @@
-name: Latest blog post workflow
+name: build
+
 on:
-  schedule: # Run workflow automatically
-    - cron: '0 * * * *' # Runs every hour, on the hour
-  workflow_dispatch: # Run workflow manually (without waiting for the cron to be called), through the Github Actions Workflow page directly
+  push:
+    branches:
+      - main
+
 jobs:
-  update-readme-with-blog:
-    name: Update this repo's README with latest blog posts
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: jyb1798/Readme_Automatic_Test@main
+      - uses: actions/checkout@v1
+      - name: Use Node.js 13.10
+        uses: actions/setup-node@v1
         with:
-          feed_list: 'https://readme-automatic-test.vercel.app/posts/2022-03-10-JSvsECMAScript-jyb1798'
+          node-version: '13.10'
+      - name: Install yarn and run unittest
+        run: |
+          yarn
+          yarn test
+        env:
+          CI: true
+      - name: Publish to Github Packages Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: jyb1798/Readme_Automatic_Test/my_image_name
+          registry: docker.pkg.github.com
+          username: ${{ secrets.GITHUB_JYB1798 }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          dockerfile: Dockerfile-prod
+          tags: latest
